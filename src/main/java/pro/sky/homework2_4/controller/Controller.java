@@ -8,6 +8,8 @@ import pro.sky.homework2_4.Employee;
 import pro.sky.homework2_4.service.EmployeeService;
 import pro.sky.homework2_4.service.EmployeeServiceImpl;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/employee")
 
@@ -30,8 +32,12 @@ public class Controller {
     }
 
     @GetMapping("/find")
-    public Employee findEmployee (@RequestParam String firstName, @RequestParam String lastName) throws Throwable {
+    public Employee findEmployee (@RequestParam String firstName, @RequestParam String lastName) {
         return employeeService.findEmployee(firstName, lastName);
+    }
+    @GetMapping()
+    public List<Employee> showAll() {
+        return employeeService.showAll();
     }
 
 }

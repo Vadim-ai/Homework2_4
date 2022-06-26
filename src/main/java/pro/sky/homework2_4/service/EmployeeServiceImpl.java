@@ -50,5 +50,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         return employee1;
     }
-
+    public List<Employee> showAll() {
+        return employees;
     }
+}
