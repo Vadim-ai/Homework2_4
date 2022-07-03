@@ -8,7 +8,10 @@ import pro.sky.homework2_4.Employee;
 import pro.sky.homework2_4.service.EmployeeService;
 import pro.sky.homework2_4.service.EmployeeServiceImpl;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/employee")
@@ -36,7 +39,7 @@ public class Controller {
         return employeeService.findEmployee(firstName, lastName);
     }
     @GetMapping()
-    public List<Employee> showAll() {
+    public List <Employee> showAll() {
         return employeeService.showAll();
     }
 

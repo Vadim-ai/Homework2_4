@@ -6,51 +6,49 @@ import pro.sky.homework2_4.exception.EmployeeAlreadyAddedException;
 import pro.sky.homework2_4.exception.EmployeeNotFoundException;
 import pro.sky.homework2_4.exception.EmployeeStorageIsFullException;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private List <Employee> employees = new ArrayList<>();
+    private Map <String, Employee> employees = new HashMap<>();
 
 
     public Employee addEmployee(String firstName, String lastName) {
-        Employee employee1 = new Employee (firstName, lastName);
+        Employee employee = new Employee (firstName, lastName);
         int maxCapacity = 2;
-        if (employees.contains(employee1)) {
+        if (employees.containsKey(employee.getFullName())) {
             throw new EmployeeAlreadyAddedException();
         }
         else if (employees.size() >= maxCapacity){
             throw new EmployeeStorageIsFullException();
         }
         else{
-        employees.add(employee1);}
-        return employee1;
+        employees.put(employee.getFullName(),employee);}
+        return employee;
     }
 
 
     public Employee deleteEmployee(String firstName, String lastName) {
 
-      Employee employee1 = new Employee(firstName, lastName);
+      Employee employee = new Employee(firstName, lastName);
 
-            if (!employees.contains(employee1)) {
+            if (!employees.containsKey(employee.getFullName())) {
             throw new EmployeeNotFoundException();
         }
            else {
-               employees.remove(employee1);
+                return employees.remove(employee.getFullName());
             }
-
-        return employee1;
     }
 
     public Employee findEmployee (String firstName, String lastName) {
-        Employee employee1 = new Employee (firstName, lastName);
-        if (!employees.contains(employee1)) {
+        Employee employee = new Employee (firstName, lastName);
+        if (!employees.containsKey(employee.getFullName())) {
             throw new EmployeeNotFoundException();
         }
-        return employee1;
+        return employee;
     }
-    public List<Employee> showAll() {
-        return employees;
+    public List <Employee> showAll() {
+        return new ArrayList<>(employees.values());
     }
 }

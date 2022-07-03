@@ -16,6 +16,10 @@ public class Employee {
         return lastName;
     }
 
+    public String getFullName () {
+        return firstName + " " + lastName;
+    }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -43,6 +47,8 @@ public class Employee {
 
     private String firstName;
     private String lastName;
+
+
 
     public Employee(String firstName, String lastName) {
         this.firstName = firstName;
