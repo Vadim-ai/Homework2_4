@@ -48,6 +48,33 @@ public class Employee {
     private String firstName;
     private String lastName;
 
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public int getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(int department) {
+        this.department = department;
+    }
+
+    public Employee(String firstName, String lastName, double salary, int department) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.salary = salary;
+        this.department = department;
+    }
+
+    private double salary;
+    private int department;
+
+
 
 
     public Employee(String firstName, String lastName) {

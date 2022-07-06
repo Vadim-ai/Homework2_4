@@ -7,9 +7,10 @@ import java.util.List;
 import java.util.Map;
 
 public interface EmployeeService {
-    Employee addEmployee (String firstName, String lastName);
+    Employee addEmployee (String firstName, String lastName , double salary, int department);
     Employee deleteEmployee (String firstName, String lastName);
     Employee findEmployee (String firstName, String lastName);
 
     List <Employee> showAll();
+
 }
