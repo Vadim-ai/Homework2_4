@@ -18,14 +18,16 @@ public class DepServiceImpl implements DepService {
 
     @Override
     public Employee findMaxSalaryDep(int department) {
-        Optional <Employee> employeeWithMaxSalary = employeeService.getEmployees().values().stream()
-                .max(Comparator.comparing(Employee::getSalary));
+        Optional <Employee> employeeWithMaxSalary = employeeService.getEmployees().values().stream().
+                filter(employee -> employee.getDepartment() == department).
+                max(Comparator.comparing(Employee::getSalary));
         return employeeWithMaxSalary.orElseThrow();
     }
 
     @Override
     public Employee findMinSalaryDep(int department) {
-        Optional <Employee> employeeWithMaxSalary = employeeService.getEmployees().values().stream()
+        Optional <Employee> employeeWithMaxSalary = employeeService.getEmployees().values().stream().
+                filter(employee -> employee.getDepartment() == department)
                 .min(Comparator.comparing(Employee::getSalary));
         return employeeWithMaxSalary.orElseThrow();
     }
